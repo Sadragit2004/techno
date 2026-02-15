@@ -1,0 +1,60 @@
+RewriteEngine on
+
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/technokl/kelaymer"
+PassengerBaseURI "/"
+PassengerPython "/home/technokl/virtualenv/kelaymer/3.9/bin/python"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
+
+# ریدایرکت به دامنه اصلی با www
+RewriteCond %{HTTP_HOST} ^technoklaymer\.ir$
+RewriteRule ^(.*)$ "https\:\/\/www\.technoklaymer\.ir\/$1" [R=301,L]
+
+# ریدایرکت صفحات Not Found
+
+
+Redirect 301 /blog-details.html https://www.technoklaymer.ir/blog/blogs/
+
+Redirect 301 /call/call/ https://www.technoklaymer.ir/call/
+
+Redirect 301 /about_us/about_us/index.html https://www.technoklaymer.ir/about-us/
+Redirect 301 /about_us/about_us/fa-ir/ https://www.technoklaymer.ir/about-us
+
+Redirect 301 /about_us/about_us/ https://www.technoklaymer.ir/about-us
+
+Redirect 301 /blog/blog_detail/climber-price/blog-details.html https://www.technoklaymer.ir/blog/blogs/
+
+Redirect 301 /blog/blog_detail/climber-price/case-study-details.html https://www.technoklaymer.ir/blog/blogs/
+
+Redirect 301 /blog/blog_detail/Scaffolding-alternative-climber/case-study-details.html https://www.technoklaymer.ir/blog/blogs/
+
+Redirect 301 /sevrice/services/sale-climber/None /sevrice/services/sale-climber/
+Redirect 301 /sevrice/services/buy-climber/None /sevrice/services/buy-climber/
+Redirect 301 /blog/blog_detail/climber-price/None /blog/blog_detail/climber-price/
+Redirect 301 /blog/blog_detail/building-facade-washing/None /blog/blog_detail/building-facade-washing/
+Redirect 301 /blog/blog_detail/klaymer-basket/None /blog/blog_detail/klaymer-basket/
+Redirect 301 /blog/blog_detail/what-is-what-is-scaffolding/None /blog/blog_detail/what-is-what-is-scaffolding/
+
+Redirect 301 /blog.html https://www.technoklaymer.ir/blog/blogs
+Redirect 301 /call/index.html https://www.technoklaymer.ir/call/
+
+
+
+
+
+RewriteCond %{QUERY_STRING} (.*)fa-ir(.*) [NC,OR]
+RewriteCond %{QUERY_STRING} (.*)search=.* [NC,OR]
+RewriteCond %{REQUEST_URI} (.*)/fa-ir/ [NC]
+RewriteRule ^(.*)$ https://www.technoklaymer.ir/ [R=301,L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
