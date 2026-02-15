@@ -1,0 +1,61 @@
+{% extends "main_template.html" %}
+{% load render_partial %}
+
+
+{% block content %}
+
+
+
+
+  <!--==============================
+         Main Start
+      ==============================-->
+  <main class="main position-relative" id="mains">
+   <!-- Hero Section    S T A R T -->
+   {% render_partial 'main:show_slider' %}
+ {% render_partial 'chat:chat_page' %}
+
+   {% render_partial 'service:main_service' %}
+
+   <!--  About Section Start   -->
+
+   <!--{% render_partial 'about:about_me' %}-->
+
+   <!--  Offer Section Start   -->
+   <!--{% render_partial 'service:newservice' %}-->
+
+   <!--  Work Process Section Start   -->
+   {% render_partial 'main:resum' %}
+   <!--  Project Section Start   -->
+   {% render_partial 'proj:projct_main' %}
+
+
+   <!--  Brand Slider Section S T A R T   -->
+   <div class="brand-slider-section">
+    <div class="container-fluid">
+     <div class="brand-slider-wrapper style1 space border-radius fix pb-640 bg-theme-color3">
+
+     </div>
+    </div>
+   </div>
+
+   <!--  Team Member Section S T A R T   -->
+   {% render_partial 'proj:member' %}
+
+
+   <!-- Faq Section    S T A R T -->
+   {% render_partial 'about:qus' %}
+
+   <!-- Blog Section    S T A R T -->
+   {% render_partial 'blog:main_blog' %}
+    
+  </main>
+
+  <!--==============================
+         Main End
+      ==============================-->
+
+  <!-- Scroll To Top -->
+
+
+{% endblock content %}

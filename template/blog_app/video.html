@@ -1,0 +1,36 @@
+<style>
+    .video-box {
+        width: 100%;
+        max-width: 800px; /* حداکثر عرض ویدئو */
+        height: auto;
+        margin: 0 auto; /* وسط‌چین کردن ویدئو */
+    }
+
+    .popup-video {
+        max-width: 90%; /* عرض پاپ‌آپ ویدئو */
+        width: auto;
+        margin: 0 auto; /* وسط‌چین کردن پاپ‌آپ */
+    }
+
+    .faq-thumb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px; /* فاصله از بالای صفحه */
+    }
+</style>
+
+<div class="faq-thumb">
+    <!-- تصویر بندانگشتی غیرفعال شده -->
+   
+    <div class="video-box" aria-labelledby="video-description">
+        <video controls>
+            <source src="{{ media_url }}{{ video.video }}" type="video/mp4">
+            مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+        </video>
+        <!-- توضیحات برای دسترس‌پذیری -->
+        <p id="video-description" style="text-align: center; margin-top: 10px;">
+            این ویدئو توضیحاتی درباره موضوع صفحه ارائه می‌کند.
+        </p>
+    </div>
+</div>

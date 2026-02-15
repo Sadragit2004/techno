@@ -1,0 +1,167 @@
+{% extends "main_template.html" %}
+
+
+{% block title1 %}
+اجاره کلایمر | خرید کلایمر | فروش کلایمر |09001976060
+{% endblock title1 %}
+
+{% block meta1 %}
+<meta name="description" content="خرید کلایمر، فروش کلایمر و اجاره کلایمر با بهترین قیمت از تکنو کلایمر. خدمات باکیفیت و شرایط ویژه برای پروژه‌های ساختمانی.">
+<meta name="keywords" content="اجاره کلایمر، فروش کلایمر، خرید کلایمر، کلایمر در تهران، خدمات کلایمر در ایران، تکنو کلایمر">
+<meta name="author" content="تکنو کلایمر - اجاره و خرید کلایمر">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Metadata (برای شبکه‌های اجتماعی مثل فیسبوک) -->
+<meta property="og:title" content="اجاره کلایمر و خرید کلایمر با بهترین قیمت | تکنو کلایمر">
+<meta property="og:description" content="خدمات تخصصی کلایمر شامل اجاره، خرید و فروش کلایمر با بهترین قیمت و کیفیت. تکنو کلایمر، انتخابی مطمئن برای پروژه‌های شما.">
+<meta property="og:image" content="{{media_url}}img/hero/breadcumbBg.png">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+<!-- Twitter Metadata -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="اجاره، خرید و فروش کلایمر با بهترین قیمت | تکنو کلایمر">
+<meta name="twitter:description" content="خرید و فروش کلایمر با شرایط ویژه و قیمت‌های مناسب از تکنو کلایمر. بهترین خدمات اجاره کلایمر برای پروژه‌های شما.">
+<meta name="twitter:image" content="{{media_url}}img/hero/breadcumbBg.png">
+{% endblock meta1 %}
+
+
+{% block json %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "خدمات کلایمر",
+    "description": "فروش و خرید کلایمر با بهترین قیمت و شرایط ویژه از تکنو کلایمر",
+    "url": "{{ request.build_absolute_uri }}",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "صفحه اصلی",
+          "item": "{{ request.scheme }}://{{ request.get_host }}/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "خدمات",
+          "item": "{{ request.build_absolute_uri }}"
+        }
+      ]
+    },
+    "mainEntity": [
+      {% for ser in services %}
+      {
+        "@type": "Service",
+        "name": "{{ ser.title }}",
+        "description": "{{ ser.summery|truncatechars:150 }}",
+        "url": "{% url 'service:detail_service' slug=ser.slug %}",
+        "image": "{{media_url}}img/icon/serviceIcon1_1.svg"
+      }{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+  </script>
+
+
+
+{% endblock json %}
+
+
+
+{% block content %}
+<div class="breadcrumb-wrapper">
+  <div class="container-fluid">
+   <div class="breadcumb border-radius" data-bg-src="{{media_url}}img/hero/breadcumbBg.png">
+    <div class="row d-flex align-items-center">
+     <div class="col-xl-6 d-flex justify-content-center">
+      <div class="page-heading">
+       <h1 class="wow fadeInUp" data-wow-delay=".3s">خدمات {{company.name_company}}</h1>
+       <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+        <li>
+         <a href="{% url 'main:index' %}"></a>
+        </li>
+        <li>
+         <i class="fas fa-chevron-left"></i>
+        </li>
+        <li>
+         خدمات
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="col-xl-6 d-flex justify-content-center">
+      <div class="breadcumb-thumb">
+       <img class="thumb" loading='lazy' src="{{media_url}}img/hero/breadcumbThumb.png" alt="تصویر مربوط به خدمات کلایمر" title="اجاره کلایمر | خرید کلایمر" />
+       <div class="shape">
+        <img src="{{media_url}}img/shape/breadcumbShape.png" loading='lazy' alt="شکل تزئینی نوار خدمات" title="اجاره کلایمر | خرید کلایمر" />
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!--  Service Section Start   -->
+ <div class="service-section space fix">
+  <div class="service-wrapper style1">
+   <div class="container">
+    <div class="row gy-30 gx-30">
+
+      {% for ser in services %}
+
+      <div class="col-lg-4 col-md-6">
+          <div class="service-card style1 wow fadeInUp" data-wow-delay="0.3s">
+           <div class="service-card-icon">
+            <!-- استفاده از forloop.counter برای اضافه کردن شماره به alt -->
+            <img loading='lazy' alt="آیکن خدمات {{ forloop.counter }} - {{ ser.title }}" title="اجاره کلایمر | خرید کلایمر" src="{{media_url}}img/icon/serviceIcon1_1.svg" loading='lazy' />
+           </div>
+           <div class="service-card-body">
+            <h3 class="title"><a href="{% url 'service:detail_service' slug=ser.slug %}">{{ser.title}}</a></h3>
+            <p>{{ser.summery}}</p>
+            <a href="{% url 'service:detail_service' slug=ser.slug %}" class="et-btn style7"> مطالعه بیشتر <i class="fa-regular fa-arrow-left"></i></a>
+           </div>
+          </div>
+         </div>
+
+{% endfor %}
+
+
+    </div>
+
+    <div class="pagination-area">
+      <ul class="paginations">
+        {% if services.has_previous %}
+          <li class="page-item">
+            <a href="?page={{ services.previous_page_number }}">قبلی</a>
+          </li>
+        {% endif %}
+
+        <!-- Page numbers -->
+        {% for num in services.paginator.page_range %}
+          <li class="page-item {% if services.number == num %}active{% endif %}">
+            <a href="?page={{ num }}">{{ num }}</a>
+          </li>
+        {% endfor %}
+
+        {% if services.has_next %}
+          <li class="page-item">
+            <a href="?page={{ services.next_page_number }}">بعدی</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+
+
+
+
+{% endblock content %}
+
+

@@ -1,0 +1,44 @@
+<div class="project-section space fix">
+    <div class="project-wrapper style1">
+     <div class="container">
+      <div class="section-title d-flex flex-column justify-content-center mb-40">
+       <span class="subtitle theme-color3 text-center mxw-163px mx-auto wow fadeInUp" data-wow-delay="0.3s">
+        پروژه های ما
+       </span>
+       <h2 class="title mxw-750px text-center mx-auto wow fadeInUp" data-wow-delay="0.6s">
+     خرید بالابرساختمانی در تمام شهر های ایران (کلایمر)
+       </h2>
+      </div>
+      <div class="row gy-30 gx-30">
+
+       {% for proj in projects %}
+       <div class="col-lg-4">
+        <div class="project-thumb wow fadeInUp" data-wow-delay="0.3s">
+         <img style='width: 400px;' class="thumb1" src="{{media_url}}{{proj.image_name}}" alt="{{proj.title}}-imageeg" title='{{proj.title}} - {{proj.group_service.title}}' />
+         <div class="thumb-content">
+          <p>{{proj.group_service.title}}</p>
+          <h3>
+            {% if proj.slug %}
+            <a href="{% url 'proj:projectDetail' slug=proj.slug %}" class="nav-btn">{{proj.title}}</a>
+        {% else %}
+            <span>No details available</span>
+        {% endif %}
+        </h3>
+        {% if proj.slug %}
+        <a href="{% url 'proj:projectDetail' slug=proj.slug %}" class="nav-btn"></a>
+    {% else %}
+        <span>No details available</span>
+    {% endif %}
+
+           مطالعه بیشتر
+           <i class="fa-regular fa-arrow-left"></i>
+          </a>
+         </div>
+        </div>
+       </div>
+       {% endfor %}
+
+      </div>
+     </div>
+    </div>
+   </div>

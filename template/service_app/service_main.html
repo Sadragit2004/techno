@@ -1,0 +1,26 @@
+<!--  Service Section Start   -->
+<div class="service-section space pb-0 fix">
+    <div class="service-wrapper style1">
+     <div class="container">
+      <div class="row gy-30 gx-30">
+
+        {% for service in services %}
+
+        <div class="col-lg-4 col-md-6">
+            <div class="service-card style1 wow fadeInUp" data-wow-delay="0.3s">
+             <div class="service-card-icon">
+               <img src="{{media_url}}img/icon/serviceIcon1_1.svg" alt="{{service.title}} - ایکون" />
+             </div>
+             <div class="service-card-body">
+              <div class="title"><a href="{% url 'service:detail_service' slug=service.slug %}">{{service.title}}</a></div>
+              <p>{{service.summery}}</p>
+              
+             </div>
+            </div>
+           </div>
+        {% endfor %}
+
+      </div>
+     </div>
+    </div>
+   </div>

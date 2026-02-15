@@ -1,0 +1,154 @@
+<section class="hero-section fix">
+  <div class="hero-wrapper style1">
+      <div class="container-fluid">
+          <div class="hero-main-container style1 fix">
+              <div class="container">
+                  <div class="row gy-5 gx-0">
+                      <div class="col-lg-7 order-2 order-lg-1">
+                          <div class="hero-content style1">
+                              <div class="hero-title-wrapper">
+                                  <div class="subtitle" alt="خانه" data-bg-src="{{media_url}}img/bg/btnBg.png">
+
+                                  </div>
+                                  <div style='font-size:25px;' class="title">{{sliders.title}}</div>
+
+                                  <strong style='color:#333;' class="description">
+                                      {% autoescape off %}{{sliders.description2}}{% endautoescape %}
+                                  </strong>
+                                   <br> <br> <br>
+
+                                  <a href="tel:{{company.mobile_number}}" class="et-btn style2">با یه کلیک تماس بگیر</a>
+
+                                  <a style='font-size:20px;' href="tel:{{company.mobile_number}}" class="et-btn style2">{{company.mobile_number}}</a>
+
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-5 order-1 order-lg-2">
+                          <div class="slider-area heroSliderOne">
+                              <div class="swiper et-slider" id="heroSliderOne" data-slider-options='{"loop": true, "effect": "fade"}'>
+                                  <div class="swiper-wrapper">
+
+                                    {% for slide in sliders.main_img.all %}
+                                    <div class="swiper-slide">
+                                        <div class="hero-thumb style1">
+                                            <div class="bordered-mask">
+                                                <div class="masked-image">
+                                                    <img
+                                                         class="main-thumb"
+                                                         src="{{media_url}}{{slide.image_name}}"
+                                                         srcset="
+                                                            {{media_url}}{{slide.image_name}} 480w,
+                                                            {{media_url}}{{slide.image_name}} 768w,
+                                                            {{media_url}}{{slide.image_name}} 1024w
+                                                         "
+                                                         sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                         alt="{{slide.alt}}"
+                                                         title="تصویر {{slide.title}} برای اجاره یا خرید کلایمر"
+                                                         />
+                                                </div>
+                                            </div>
+
+                                            <div class="shape">
+                                                <img
+                                                     src="{{media_url}}img/shape/heroShape1_1.png"
+                                                     alt="بنر یک سایت"
+                                                     title="طراحی مدرن برای {{slide.title}}"
+                                                     loading="lazy" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<div class="hero-video-wrapper relative mt-10">
+  <div class="video-container relative overflow-hidden rounded-2xl shadow-xl">
+    <!-- پوستر -->
+    <img src="{{media_url}}img/bg/video-poster.jpg"
+         alt="ویدیو معرفی"
+         class="w-100 h-auto object-cover"
+         loading="lazy">
+
+    <!-- دکمه پلی -->
+    <button class="play-btn absolute top-50 start-50 translate-middle" data-video="https://www.aparat.com/video/video/embed/videohash/lke2bf3/vt/frame">
+        <span></span>
+    </button>
+  </div>
+</div>
+
+<style>
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 20px;
+}
+.play-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+.play-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+.play-btn span {
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px solid #e63946;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+@media (max-width: 768px) {
+    .play-btn {
+        width: 55px;
+        height: 55px;
+    }
+    .play-btn span {
+        border-left: 16px solid #e63946;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const playBtn = document.querySelector(".play-btn");
+    if (playBtn) {
+        playBtn.addEventListener("click", function () {
+            const videoSrc = this.getAttribute("data-video");
+            const container = this.closest(".video-container");
+            container.innerHTML = `
+                <iframe src="${videoSrc}"
+                        width="100%" height="100%"
+                        style="border:0;border-radius:20px;"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen>
+                </iframe>
+            `;
+        });
+    }
+});
+</script>

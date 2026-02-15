@@ -1,0 +1,42 @@
+<div class="offer-section space pb-0 fix">
+    <div class="offer-wrapper style1">
+     <div class="container">
+      <div class="section-title d-flex flex-column justify-content-center mb-40">
+       <h6 class="subtitle theme-color3 text-center mxw-181px mx-auto wow fadeInUp" data-wow-delay="0.3s">
+        آنچه ما ارائه می دهیم
+       </h6>
+       <h2 style='font-size:22px;' class="title mxw-750px text-center mx-auto wow fadeInUp" data-wow-delay="0.6s">
+          خرید دستگاه کلایمر ساختمانی و اجاره کلایمر با بهترین قیمت و شرایط در تهران
+      </h2>
+
+      </div>
+      <div class="row gy-30 gx-30">
+
+       {% for ser in services %}
+
+       <div class="col-lg-4">
+        <div class="offer-card style1 wow fadeInUp" data-wow-delay="0.3s">
+         <div class="offer-card-body">
+          <div class="title">
+           <img src="{{media_url}}img/icon/offerIcon1_1.svg" alt="ایکون  (خدمات){{ser.title}}"  title = 'خرید کلایمر تهران| اجاره کلایمر' />
+           <h3><a href="{% url 'service:detail_service' slug=ser.slug %}">{{ser.title}}</a></h3>
+          </div>
+          <p>
+          {{ser.summery}}
+          </p>
+          <a href="{% url 'service:detail_service' slug=ser.slug %}" class="link-btn style2"> مطالعه بیشتر <i class="fa-regular fa-arrow-left"></i></a>
+         </div>
+         <a href="{% url 'service:detail_service' slug=ser.slug %}">
+          <div class="offer-card-thumb">
+          <img src="{{media_url}}{{ser.image_name}}" alt="{{ser.title}} - image"  title = 'خرید کلایمر | اجاره کلایمر' />
+          </div>
+         </a>
+        </div>
+       </div>
+
+       {% endfor %}
+
+      </div>
+     </div>
+    </div>
+   </div>

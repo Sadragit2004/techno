@@ -1,0 +1,48 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Django ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# --- Virtual Environment ---
+# نام‌های رایج برای محیط مجازی
+venv/
+env/
+.env
+.venv/
+ENV/
+
+# --- Environment Variables (Security) ---
+# فایل‌هایی که رمزها و تنظیمات محرمانه را نگه می‌دارند
+.env
+.env.local
+.env.*
+/media
+/static
+# --- IDE & Editors ---
+# تنظیمات مخصوص ادیتورها که نباید در گیت باشند
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Jupyter Notebooks (اگر استفاده می‌کنید) ---
+.ipynb_checkpoints
+
+# --- Distribution / Packaging ---
+build/
+dist/
+*.egg-info/
+
+static/
+
+static/

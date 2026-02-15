@@ -1,0 +1,49 @@
+<!-- Sidemenu    S T A R T -->
+<div class="sidemenu-wrapper sidemenu-info d-none d-lg-block">
+    <div class="sidemenu-content">
+        <button class="closeButton sideMenuCls"><i class="far fa-times"></i></button>
+        <div class="widget">
+            <div class="et-widget-about">
+                <div class="about-logo">
+                    <a href="#"><img src="{{media_url}}img/logo1.svg" alt="تکنو کلایمر -اسلاید" /></a>
+                </div>
+                <p class="text">با بهترین قیمت کلایمر خودتو اجاره کن.</p>
+            </div>
+        </div>
+        <div class="widget">
+            <span class="widget_title">راه ارتباطی</span>
+            <div class="et-widget-contact">
+                <div class="info-box_text">
+                    <div class="icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="details">
+                        <a target="_blank" rel="noopener noreferrer nofollow" href="{{company.address_link}}">{{company.address}}</a>
+                    </div>
+                </div>
+                <div class="info-box_text">
+                    <div class="icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="details">
+                        <p><a href="tel:{{company.mobile_number}}" class="info-box_link">{{company.mobile_number}}</a></p>
+                        <p><a href="tel:{{company.mobile_number}}" class="info-box_link">{{company.mobile_number}}</a></p>
+                    </div>
+                </div>
+                <div class="info-box_text">
+                    <div class="icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widget newsletter-widget">
+            <span class="widget_title">خبرنامه ما</span>
+            <div class="et-social mt-4">
+                {% for com in company.social_company.all %}
+                <a href="{{com.addresss_link}}">{% autoescape off %}{{com.icon}}{% endautoescape %}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

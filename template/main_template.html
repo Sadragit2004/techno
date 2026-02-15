@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <html lang="fa-IR" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="https://ogp.me/ns#" dir='rtl'>
+   <head>
+    <meta charset="UTF-8">
+    <link rel="alternate" href="https://www.technoklaymer.ir/" hreflang="fa-IR" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="google-site-verification" content="4WWq5WJVJoZwAHAXz1MiREEzr1xIL3bU2RE8gqlaym0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <link rel="sitemap" type="application/xml" href="http://technoklaymer.ir/sitemap.xml">
+    <meta name="twitter:label1" content="زمان تقریبی برای خواندن" />
+	<meta name="twitter:data1" content="9 دقیقه" />
+     <link rel="canonical" href="{{ request.build_absolute_uri }}">
+        
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TZPNL7TXP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-5TZPNL7TXP');
+    </script>
+
+
+
+      {% if request.path == "/" %}
+    
+    
+    <meta name="description" content="خرید کلایمر با بهترین قیمت سال جدید با مشاوره رایگان همین الان میتوانید کلایمر خود را سفارش سازی کنید">
+     <meta name="keywords" content="کلایمر, خرید کلایمر, فروش کلایمر, کلایمر ساختمانی, ویژگی‌های کلایمر,خرید دستگاه کلایمر">">
+
+    <meta name="author" content="تکنو کلایمر">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:title" content="خرید کلایمر | فروش کلایمر به سرتاسر ایران | 09001976060">
+    
+    <meta property="og:description" content="خرید دستگاه کلایمر ساختمانی در تهران با بهترین قیمت و شرایط میتوانید همین الان خریداری فرمایید">
+    <meta property="og:image" content="{{ request.build_absolute_uri }}media/img/google-icon.png">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:site_name" content="تکنو کلایمر">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="خرید کلایمر با بهترین قیمت ممکن در بازار 2025">
+    <meta name="twitter:description" content="خرید دستگاه کلایمر ساختمانی در تهران با بهترین قیمت و شرایط میتوانید همین الان خریداری فرمایید">
+    <meta name="twitter:image" content="{{ request.build_absolute_uri }}/media/images/twitter-image.jpg">
+    
+    <link rel="icon" type="image/png" href="/media/img/google-icon-1.png">
+    <link rel="icon" href="/media/img/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="/media/img/favicon.svg" type="image/svg+xml">
+    <link rel="icon"  sizes="32x32" href="/media/img/favicon.svg">
+    <link rel="icon" type="image/png"   sizes="16x16" href="/media/img/google-icon-1.png">
+    <link rel="icon" type="image/png"  sizes="16x16" href="/media/img/google-icon-1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/img/favicon.svg">
+    
+ 
+    <meta property="article:published_time" content="{{ company.register_date|date:'Y-m-dT%H:%M:%S' }}">
+    <meta property="article:modified_time" content="{{ company.update_date|date:'Y-m-dT%H:%M:%S' }}">
+      {% else %}
+          {% block meta1 %}
+          {% endblock meta1 %}
+
+      {% endif %}
+      {% if request.path == "/" %}
+      
+      
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "logo": "https://technoklaymer.ir/media/img/favicon.svg",
+      "name": "{{ company.name_company }}",
+      "telephone": "{{ company.phone_number }}",
+      "mobile": "{{ company.mobile_number }}",
+      "email": "{{ company.email }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ company.address }}",
+        "addressCountry": "IR",
+        "addressLocality": "Tehran",
+        "postalCode": "12345"
+      },
+      "video": {
+        "@type": "VideoObject",
+        "name": "{{ company.name_company }} Company Video",
+        "description": "A video showcasing {{ company.name_company }}",
+        "thumbnailUrl": "{{ company.image_name.url }}",
+        "contentUrl": "{{ company.video.url }}",
+        "uploadDate": "{{ company.register_date|date:'Y-m-d' }}"
+      },
+      "resumes": [
+        {% for resume in company.resum_com.all %}
+        {
+          "@type": "JobPosting",
+          "title": "{{ resume.subject }}",
+          "description": "{{ resume.description }} اجاره کلایمر با بهترین شرابط و خرید کلامیردر تهران با بهترین شرایط",
+          "datePosted": "{{ resume.register_date|date:'Y-m-d' }}",
+          "validThrough": "{{ resume.update_date|date:'Y-m-d' }}",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "{{ company.name_company }}",
+            "sameAs": "{{ company.address_link }}"
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "name": "Tehran"
+          }
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "mainEntityOfPage": "{{ request.build_absolute_uri }}",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "{{ company.phone_number }}",
+        "areaServed": "IR",
+        "availableLanguage": "fa"
+      },
+      "additionalType": "https://schema.org/Organization",
+      "url": "{{ request.build_absolute_uri }}",
+      "founder": {
+        "@type": "Person",
+        "name": "حسین فرهادی",
+        "jobTitle": "مدیرعامل"
+      }
+    }
+</script>
+
+
+
+      {% else %}
+          {% block json %}
+          {% endblock json %}
+      {% endif %}
+
+
+      <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+      <!-- Fontawesome Icon -->
+      <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}" />
+      <!-- Animate Css -->
+      <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+      <!-- Magnific Popup -->
+      <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.min.css' %}" />
+      <!-- Swiper Js -->
+      <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
+      <!-- Nice Select -->
+      <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+      <!-- Theme Custom CSS -->
+       <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}" />
+
+      <link rel="stylesheet" href="{% static 'assets/css/main1.css' %}" />
+        <!-- Magnific Popup CSS -->
+
+
+
+
+      <title>
+          {% if request.path == "/" %}
+          
+          خرید کلایمر | فروش کلایمر در سرتاسر ایران | 09001976060
+          
+          {% else %}
+             تکنو کلایمر | {% block title1 %}{% endblock title1 %}
+          {% endif %}
+      </title>
+      
+     
+
+  </head>
+
+<body  class="bg-body-color">
+
+    {% include "partials/header.html" %}
+    {% include "partials/message.html" %}
+    <!--{% include "partials/loading.html" %}-->
+    {% include "partials/mobile_menu.html" %}
+    {% include "partials/slidemenu.html" %}
+
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include "partials/footer.html" %}
+
+
+</body>
+
+{% include "partials/scripts.html" %}
+
+
+
+</html>

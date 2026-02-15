@@ -1,0 +1,131 @@
+<div class="scroll-top">
+  <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+   <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;"></path>
+  </svg>
+ </div>
+
+  <!-- Footer Area   S T A R T -->
+  <footer class="footer-area">
+    <div class="widget-area style1 pb-60">
+     <div class="container-fluid">
+      <div class="footer-layout style1" data-bg-src="{{media_url}}img/bg/footerBg.png">
+       <div class="container">
+        <div class="row d-flex justify-content-between">
+         <div class="col-xl-4 col-md-6 col-12">
+          <div class="widget footer-widget wow fadeInUp" data-wow-delay=".6s">
+           <div class="et-widget-about">
+            <div class="about-logo">
+             <a href="{% url 'main:index' %}">
+           <img src="{{media_url}}img/logo1.svg" alt="techo kelaymer" />
+          </a>
+            </div>
+            <p class="about-text">
+          همین الان از بهترین شرکت فروش کلایمر خرید کن
+            </p>
+
+            <div class="email-input-container mb-3">
+             <input type="email" id="email" placeholder="آدرس ایمیل را وارد کن" required />
+             <button class="transformelementrtl" type="submit" id="submitButton"><i class="fa-sharp fa-solid fa-paper-plane"></i></button>
+            </div>
+
+            <div class="et-social style2">
+
+             {% for socie in company.social_company.all %}
+
+             <a  target="_blank"  rel="noopener noreferrer nofollow" href="{{socie.address_link}}">{% autoescape off %}{{socie.icon}}{% endautoescape %}</a>
+
+             {% endfor %}
+
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-xl-2 col-md-6 col-12">
+          <div class="widget widget_nav_menu footer-widget wow fadeInUp" data-wow-delay="1s">
+           <span class="widget_title">درباره شرکت</span>
+           <div class="menu-all-pages-container">
+            <ul class="menu">
+            
+             <li>
+              <a href="/sevrice/services/rent-climber-mashhad/"><i class="fa-light fa-hyphen"></i>اجاره کلایمر در مشهد</a>
+             </li>
+             <li>
+              <a href="/sevrice/services/sale-climber/"><i class="fa-light fa-hyphen"></i>فروش کلایمر</a>
+             </li>
+             
+             <li>
+              <a href="/sevrice/services/climber-rail-tehran/"><i class="fa-light fa-hyphen"></i>اجاره کلایمر ریلی در تهران</a>
+             </li>
+             <li>
+              <a href="/sevrice/services/rent-climber-tabriz/"><i class="fa-light fa-hyphen"></i>اجاره کلایمر در تبریز</a>
+             </li>
+            
+            </ul>
+           </div>
+          </div>
+         </div>
+
+         <div class="col-xl-4 col-md-6 col-12 d-flex justify-content-start justify-content-xl-center">
+          <div class="widget widget_nav_menu footer-widget wow fadeInUp" data-wow-delay="1.6s">
+           <span class="widget_title">راه ارتباطی</span>
+           <div class="single-contact-widget">
+            <div class="single-contact mb-30">
+             <div class="single-contact_item">
+              <i class="fa-solid fa-phone"></i>
+             </div>
+             <div class="single-contact_item">
+              <div class="single-contact_widget-title">
+               <span>تماس با ما</span>
+              </div>
+              <a href="tel:{{company.mobile_number}}">{{company.mobile_number}}</a> | 
+              <a href="tel:{{company.phone_number}}">{{company.phone_number}}</a>
+             </div>
+            </div>
+            <div class="single-contact mb-30">
+           
+            
+            <div class="single-contact mb-30">
+             <div class="single-contact_item">
+              <i class="fa-solid fa-location-dot"></i>
+             </div>
+             <div class="single-contact_item">
+              <div class="single-contact_widget-title">
+               <span>آدرس دفتر</span>
+              </div>
+             <a target="_blank" rel="noopener noreferrer" href="{{company.address_link}}">{{company.address}}</a>
+
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="copyright-wrap bg-theme">
+         <div class="container px-0">
+          <div class="copyright-layout">
+           <div class="layout-text wow fadeInUp" data-wow-delay=".3s">
+               
+            <p class="copyright"><i class="fal fa-copyright"></i> تمامی حقوق برای <a href="{% url 'main:index' %}">تکنو کلایمر</a> محفوظ است.</p>
+            
+            
+             <p style='color:#333;'>طراحی سایت و سئو rank0.ir</p>
+
+           </div>
+           <div class="layout-link wow fadeInUp" data-wow-delay=".6s">
+            <div class="link-wrapper">
+             <a href="#">شرایط و قوانین </a>
+             <a href="#">حریم خصوصی</a>
+             <a href="{% url 'call:call' %}">تماس با ما</a>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+   <!--********************************
+          Code End  Here
+          ******************************** -->

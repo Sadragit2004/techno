@@ -1,0 +1,241 @@
+{% extends "main_template.html" %}
+
+{% block title1 %}
+
+{{meta_tag.page_title}}
+
+{% endblock title1 %}
+
+{% block meta1 %}
+
+<meta name="description" content="{{service.title}} -{{meta_tag.description}}">
+<meta name="author" content="خرید کلایمر | فروش کلایمر | اجاره کلایمر">
+<meta name="keywords" content="{{meta_tag.og_description}}">
+<meta property="og:title" content="{{meta_tag.page_title}} - جزییات خدمات">
+<meta property="og:description" content="{{meta_tag.description}}">
+<meta property="og:image" content="{{media_url}}{{service.image_name}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{request.build_absolute_uri}}">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{service.title}} - جزییات خدمات">
+<meta name="twitter:description" content="{{meta_tag.description}}">
+<meta name="twitter:image" content="{{media_url}}{{service.image_name}}">
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<meta property="article:modified_time" content="{{service.register_date}}" />
+
+
+{% endblock meta1 %}
+
+
+{% block json %}
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "{{ service.title }}",
+      "description": "{{meta_tag.description}}",
+      "provider": {
+        "@type": "Organization",
+        "name": "{{ company.name_company }}",
+        "url": "{{ request.build_absolute_uri }}",
+        "logo": "{{ media_url }}img/logo.svg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "09001976060",
+          "contactType": "Customer Service"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "حسین فرهادی",
+          "jobTitle": "حسین فرهادی",
+          "email": "{{company.emai}}",
+          "telephone": "09001976060",
+          "image": "{{ media_url }}img/manager.jpg"
+        }
+      },
+      "image": [
+        "{{ media_url }}{{ service.image_name }}"
+      ],
+      "url": "{{ request.build_absolute_uri }}",
+      "areaServed": "ایران",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "خدمات ما",
+        "itemListElement": [
+          {% for group in groups %}
+          {
+            "@type": "Offer",
+            "name": "{{ group.title_group }}",
+            "url": "{% url 'main:index' %}"
+          }{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ]
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ request.build_absolute_uri }}"
+      }
+    }
+    </script>
+
+
+{% endblock json %}
+
+
+{% block content %}
+
+<style>
+    .thumb-img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover; /* برای تنظیم نحوه برش تصویر */
+    }
+    
+    
+    .responsive-image {
+    width: 100%; /* تصویر تمام عرض می‌شود */
+    max-width: 600px; /* حداکثر عرض تصویر */
+    height: auto; /* نسبت ابعاد تصویر حفظ می‌شود */
+    display: block; /* حذف فاصله‌های اضافی زیر تصویر */
+    margin: 0 auto; /* مرکز‌چین کردن تصویر */
+}
+
+
+@media (max-width: 600px) {
+    .responsive-image {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+</style>
+
+==============================-->
+
+
+<main>
+  <div class="breadcrumb-wrapper">
+    <div class="container-fluid">
+     <div class="breadcumb border-radius"
+          alt="بنر اصلی خدمات {{service.title}} در {{company.name_company}}"
+          title="{{service.title}}"
+          data-bg-src="{{media_url}}img/hero/breadcumbBg.png">
+      <div class="row d-flex align-items-center">
+       <div class="col-xl-6 d-flex justify-content-center">
+        <div class="page-heading">
+         <h1 class="wow fadeInUp" data-wow-delay=".3s">{{service.title}}</h1>
+         <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+          <li>
+           <a href="{% url 'main:index' %}" alt="بازگشت به صفحه اصلی {{company.name_company}}">
+          خرید کلایمر
+           </a>
+          </li>
+          <li>
+           <i class="fas fa-chevron-left" alt="آیکون فلش بازگشت"></i>
+          </li>
+          <li>
+           {{company.name_company}}
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-xl-6 d-flex justify-content-center">
+        <div class="breadcumb-thumb">
+         <img class="thumb"
+              loading="lazy"
+              src="{{media_url}}img/hero/breadcumbThumb.png"
+              alt="تصویر نمایشی خدمات {{service.title}}"
+              title="تصویر خدمات {{service.title}}" />
+         <div class="shape">
+          <img loading="lazy"
+               src="{{media_url}}img/shape/breadcumbShape.png"
+               alt="طرح گرافیکی مکمل بنر {{service.title}}"
+               title="طرح گرافیکی {{service.title}}" />
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+
+<!--  Service Details Section Start   -->
+<section class="service-details-section">
+  <div class="service-details-wrapper style1 space fix">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-xl-8">
+          <article class="service-details-content">
+            <figure>
+             <img
+                    src="{{ media_url }}{{ service.image_name }}"
+                    srcset="{{ media_url }}{{ service.image_name }} 300w, {{ media_url }}{{ service.image_name }} 600w"
+                    sizes="(max-width: 600px) 300px, 600px"
+                    alt="{{ service.title }} - image"
+                    title="{{ service.title }}"
+                    loading="lazy"
+                    class="responsive-image"
+                     width="600"
+                    height="400"
+                    style="width: 500px; height: 300px; object-fit: cover; border -radius: 8px;"
+/>
+                />
+
+              <figcaption>
+                  {{ service.title }}
+              </figcaption>
+            </figure>
+
+            <p class="text1">
+              {% autoescape off %}{{ service.decription }}{% endautoescape %}
+            </p>
+          </article>
+        </div>
+
+        <div class="col-xl-4">
+          <div class="main-sidebar">
+            <div class="single-sidebar-widget wow fadeInUp" data-wow-delay=".4s">
+              <div class="wid-title">
+            <div>خدمات ما</div>
+
+              </div>
+              <div class="news-widget-categories">
+                <ul>
+                  {% for group in groups %}
+                    <li>
+                      <a href="#">
+                        {{ group.title_group }}<span><i class="fa-solid fa-arrow-left"></i></span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            <div class="single-sidebar-widget pt-0 bg-theme-color2 wow fadeInUp" data-wow-delay=".4s">
+              <div class="thumb">
+               <img src="{{ media_url }}img/service/serviceDetailsThumb1_4.png" alt="{{ service.title }} - image2" />
+              </div>
+              <div class="wid-title pl-30 pr-30 pt-4 pb-2">
+                <div>برای مشاوره گرفتن تماس بگیرید !</div>
+              </div>
+              <div class="btn-wrapper pr-40">
+                <a href="{% url 'call:call' %}" class="et-btn style2">تماس بگیر <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<iframe src="{{service.city_link}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+{% endblock content %}

@@ -1,0 +1,163 @@
+{% extends "main_template.html" %}
+
+
+{% block meta1 %}
+
+<meta name="description" content="مطالب وبلاگ‌های حرفه‌ای درباره اجاره کلایمر، خرید کلایمر و راهنمایی‌های مرتبط با پروژه‌های ساختمانی. مقالات ارائه‌شده توسط {{ company.name_company }} برای مشاوره پروژه‌های شما.">
+<meta name="keywords" content="اجاره کلایمر, خرید کلایمر, پروژه‌های ساختمانی, بلاگ, {{ company.name_company }}">
+<meta name="author" content="{{ company.name_company }}">
+<meta property="og:title" content="وبلاگ‌های {{ company.name_company }} - اجاره و خرید کلایمر">
+<meta property="og:description" content="مطالب تخصصی درباره اجاره کلایمر و خرید کلایمر برای پروژه‌های ساختمانی، همراه با مقالات مرتبط و مشاوره حرفه‌ای.">
+<meta property="og:image" content="{{ media_url }}img/hero/breadcumbBg.png">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="وبلاگ‌های {{ company.name_company }}">
+<meta name="twitter:description" content="راهنمایی‌های تخصصی درباره اجاره و خرید کلایمر و مطالب مفید برای پروژه‌های ساختمانی.">
+<meta name="twitter:image" content="{{ media_url }}img/hero/breadcumbBg.png">
+{% endblock meta1 %}
+
+
+{% block title1 %}
+09001976060 | وبلاگ های {{company.name_company}}
+{% endblock title1 %}
+
+
+{% block content %}
+==============================-->
+<div class="breadcrumb-wrapper">
+ <div class="container-fluid">
+  <div class="breadcumb border-radius" data-bg-src="{{media_url}}img/hero/breadcumbBg.png">
+   <div class="row d-flex align-items-center">
+    <div class="col-xl-6 d-flex justify-content-center">
+     <div class="page-heading">
+      <h1 class="wow fadeInUp" data-wow-delay=".3s">وبلاگ های {{company.name_company}}</h1>
+      <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+      <li>
+           <a href="{% url 'main:index' %}">
+          خرید کلایمر
+           </a>
+          </li>
+       <li>
+        <i class="fas fa-chevron-left"></i>
+       </li>
+       <li>
+        بلاگ
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="col-xl-6 d-flex justify-content-center">
+     <div class="breadcumb-thumb">
+      <img class="thumb" src="{{media_url}}img/hero/breadcumbThumb.png" alt="images-blog-list" alt="اجاره کلایمر | خرید کلایمر"
+      title="اجاره کلایمر | خرید کلایمر" />
+      <div class="shape"><img src="{{media_url}}img/shape/breadcumbShape.png" alt="images-blog-list2" alt="اجاره کلایمر | خرید کلایمر"
+        title="اجاره کلایمر | خرید کلایمر" /></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!--==============================
+       News Standard Area
+    ==============================-->
+<section class="news-standard fix space">
+ <div class="container">
+  <div class="row gy-5 gx-4">
+   <div class="col-12 col-lg-8">
+    <div class="news-standard-wrapper">
+
+
+       {% for blog in blogs %}
+       <div class="news-standard-items wow fadeInUp" data-wow-delay=".2s">
+              <div class="news-thumb">
+                <img
+                src="{{ media_url }}{{ blog.image_name }}"
+                alt="اجاره کلایمر | خرید کلایمر"
+                title="اجاره کلایمر | خرید کلایمر"
+                srcset="
+                  {{ media_url }}{{ blog.image_name }},
+                  {{ media_url }}{{ blog.image_name }},
+                  {{ media_url }}{{ blog.image_name }}
+                "
+                sizes="(max-width: 480px) 100vw, (max-width: 800px) 50vw, 33vw"
+                loading = 'lazy'
+              />
+
+               <div class="post-date">
+                <h3><i class="fa-regular fa-clock"></i> {{blog.time_since_posted}}</h3>
+               </div>
+              </div>
+              <div class="news-content">
+               <ul>
+
+                {% for ath in blog.Auther_blog.all %}
+
+                <li>
+                     <img src="{{media_url}}img/icon/userIcon2.svg" alt="icon-for-author" />
+                     {{ath.Author_name}}
+                    </li>
+
+
+                {% endfor %}
+                <li>
+                 <img src="{{media_url}}img/icon/commentIcon2.svg" alt="icon-for-comment" />
+                {{blog.comment_blog.all|length}} دیدگاه
+                </li>
+               </ul>
+               <h3>
+                <a href="{% url 'blog:blog_detail' slug=blog.slug %}">{{blog.subject}}</a>
+               </h3>
+               <p>
+              {{blog.description}}
+               </p>
+               <a href="" class="et-btn style4 mt-1">
+                ادامه مطلب
+                <i class="fa-solid fa-arrow-left"></i>
+               </a>
+              </div>
+             </div>
+
+       {% endfor %}
+
+       <div class="pagination-area">
+              <ul class="paginations">
+                  {% if blogs.has_previous %}
+                  <li class="page-item">
+                      <a href="?page={{ blogs.previous_page_number }}">قبلی</a>
+                  </li>
+                  {% endif %}
+
+                  {% for num in blogs.paginator.page_range %}
+                  <li class="page-item {% if num == blogs.number %}active{% endif %}">
+                      <a href="?page={{ num }}">{{ num|default_if_none:"-" }}</a>
+                  </li>
+                  {% endfor %}
+
+                  {% if blogs.has_next %}
+                  <li class="page-item">
+                      <a href="?page={{ blogs.next_page_number }}">
+                          بعدی
+                          <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" version="1.1"
+                               xmlns:xlink="http://www.w3.org/1999/xlink" transform="matrix(-1,0,0,-1,0,0)">
+                              <path d="M7 7.00008L0 0L4.45455 7.00008L0 14L7 7.00008Z"></path>
+                          </svg>
+                      </a>
+                  </li>
+
+
+              </ul>
+          </div>
+ {% endif %}
+     </div>
+    </div>
+   </div>
+  
+  </div>
+ </div>
+</section>
+
+{% endblock content %}

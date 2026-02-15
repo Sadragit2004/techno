@@ -1,0 +1,46 @@
+<section class="blog-section space fix">
+    <div class="container">
+     <div class="row gy-3 d-flex align-items-end justify-content-between mb-20">
+      <div class="col-xl-8">
+       <div class="section-title">
+        <span class="subtitle theme-color3 wow fadeInUp" data-wow-delay="0.3s">اخبار و بلاگ</span>
+         <div class="title text-title wow fadeInUp" data-wow-delay="0.6s">مقالات جدید ما</div>
+       </div>
+      </div>
+      <div class="col-xl-4 d-flex justify-content-start justify-content-xl-end">
+      
+      </div>
+     </div>
+     <div class="row">
+
+     {% for blog in blogs %}
+     <div class="col-xl-4 col-md-6">
+        <div class="blog_card style1 wow fadeInUp" data-wow-delay="0.3s">
+         <a href="#">
+          <div class="blog_card__thumb img-shine">
+             <img loading="lazy" style='height: 450px;' src="{{media_url}}{{blog.image_name}}" alt="{{blog.subject}}-main-1" />
+          </div>
+         </a>
+         <div class="blog_card__body">
+          <div class="blog_card__meta">
+           <a href="">
+           {% for auther in blog.Auther_blog.all %}
+           <div class="posted-by">{{auther.Author_name}}</div>
+           {% endfor %}
+           </a>
+           <a href="{% url 'blog:blog_detail' slug=blog.slug %}">
+            <div class="posted-on">{{blog.subject}}</div>
+           </a>
+          </div>
+          <p>
+           <a href="">{{blog.description}}</a>
+          </p>
+         
+         </div>
+        </div>
+       </div>
+     {% endfor %}
+
+     </div>
+    </div>
+   </section>

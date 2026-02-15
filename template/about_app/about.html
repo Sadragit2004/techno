@@ -1,0 +1,290 @@
+{% extends "main_template.html" %}
+
+{% load render_partial %}
+ {% block title1 %}
+ اجاره کلایمر | خرید کلایمر |  درباره ما |09001976060
+ {% endblock title1 %}
+
+{% block meta1 %}
+
+
+<meta name="description" content="تکنو کلایمر پیشرو در اجاره و خرید کلایمر. ارائه خدمات حرفه‌ای کلایمر در تهران و سراسر ایران با تضمین کیفیت و قیمت مناسب." />
+<meta name="keywords" content="اجاره کلایمر, خرید کلایمر, قیمت کلایمر, کلایمر ساختمانی, اجاره کلایمر در تهران, تکنو کلایمر, خدمات کلایمر" />
+
+<meta name="author" content="تکنو کلایمر" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="fa" />
+<meta name="theme-color" content="#ffffff" />
+
+<!-- Open Graph Meta Tags (For Social Media) -->
+<meta property="og:title" content="قیمت کلایمر | بهترین گزینه‌های کلایمر ساختمانی" />
+<meta property="og:description" content="جدیدترین اطلاعات درباره قیمت کلایمر و انواع کلایمرهای ساختمانی با کیفیت بالا." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+<meta property="og:image" content="{{media_url}}img/hero/breadcumbThumb.png" />
+<meta property="og:locale" content="fa_IR" />
+<meta property="og:site_name" content="تکنو کلایمر | خرید و اجاره کلایمر ساختمانی" />
+<meta property="article:modified_time" content="{{about.register_date}}" />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="قیمت کلایمر | بهترین گزینه‌ها" />
+<meta name="twitter:description" content="تکنو کلایمر پیشرو در اجاره و خرید کلایمر. ارائه خدمات حرفه‌ای کلایمر در تهران و سراسر ایران با تضمین کیفیت و قیمت مناسب." />
+<meta name="twitter:image" content="{{media_url}}img/hero/breadcumbThumb.png" />
+
+<!-- Canonical Link -->
+<link rel="canonical" content="{{ request.build_absolute_uri }}" />
+
+<!-- Favicon -->
+
+
+{% endblock meta1 %}
+
+
+{% block json %}
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "قیمت کلایمر",
+      "url": "{{ request.build_absolute_uri }}",
+     "description": "تکنو کلایمر پیشرو در اجاره و خرید کلایمر. ارائه خدمات حرفه‌ای کلایمر در تهران و سراسر ایران با تضمین کیفیت و قیمت مناسب.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "خانه",
+            "item": "https://technoklaymer.ir",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "قیمت کلایمر",
+            "item": "{{ request.build_absolute_uri }}"
+          }
+        ]
+      },
+      "mainEntity": {
+        "@type": "Product",
+        "name": "کلایمر",
+        "description": "کلایمر‌های باکیفیت برای پروژه‌های ساختمانی و صنعتی.",
+        "image": "https://technoklaymer.ir/{{media_url}}{{about.image_name}}",
+        "brand": {
+          "@type": "Brand",
+          "name": "تکنو کلایمر"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "10000000",
+          "priceCurrency": "IRR",
+          "availability": "https://schema.org/InStock",
+          "url": "{{ request.build_absolute_uri }}"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "تکنو کلایمر",
+        "url": "https://technoklaymer.ir",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://technoklaymer.ir/media/images/logo1.svg"
+        }
+      }
+    }
+    </script>
+
+
+{% endblock json %}
+
+{% block content %}
+
+<div class="breadcrumb-wrapper">
+    <div class="container-fluid">
+      <div
+        class="breadcumb border-radius"
+        data-bg-src="{{media_url}}img/hero/breadcumbBg.png"
+      >
+        <div class="row d-flex align-items-center">
+          <div class="col-xl-6 d-flex justify-content-center">
+            <div class="page-heading">
+              <h1 class="wow fadeInUp" data-wow-delay=".3s"> تکنو کلایمر| درباره ما</h1>
+              <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                <li>
+                  <a href="#"> </a>
+                </li>
+                <li>
+                  <i class="fas fa-chevron-left"></i>
+                </li>
+                <li>درباره ما</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-6 d-flex justify-content-center">
+            <div class="breadcumb-thumb">
+              <img
+                class="thumb"
+                src="{{media_url}}img/hero/breadcumbThumb.png"
+                alt="تکنو کلایمر | بنر دوم"
+                loading="lazy"
+              />
+              <div class="shape">
+                <img
+                  src="{{media_url}}img/shape/breadcumbShape.png"
+                  alt="تکنو کلایمر -بنر"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  About Section S T A R T   -->
+  <section class="about-section space pb-0 fix">
+    <div class="about-container-wrapper style2">
+      <div class="container">
+        <div class="row gy-30 gx-80">
+          <div class="col-xl-6">
+            <div class="about-thumb wow fadeInUp" data-wow-delay="0.3s">
+
+              <div class="shape">
+                <img
+                src="{{media_url}}{{about.image_name}}"
+                alt="خرید کلایمر | اجاره کلایمر |درباره ما"
+                loading="lazy"
+                title="خرید کلایمر | اجاره کلایمر"
+                fetchpriority="high"
+                decoding="async"
+                width="537"
+                height="537"
+                srcset="{{media_url}}{{about.image_name}} 537w, {{media_url}}{{about.image_name_small}} 300w, {{media_url}}{{about.image_name}} 150w"
+                sizes="(max-width: 537px) 100vw, 537px"
+              />
+                <h6>
+                  <span class="counter-number">20</span>
+                  <span class="plus">+</span> سال تجربه
+                </h6>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6">
+            <div class="about-content">
+              <div class="section-title style4">
+                <h6 class="subtitle style2 wow fadeInUp" data-wow-delay="0.3s">
+                  درباره شرکت
+                </h6>
+                <h1 class="title wow fadeInUp" data-wow-delay="0.6s">
+                  {{about.title}}
+                </h1>
+                <p>{% autoescape off %}{{about.decription}}{% endautoescape %}</p>
+              </div>
+
+              <div class="checklist-box row gy-5 gx-17">
+                <div class="col-lg-7">
+                  <div
+                    class="checklist-wrapper wow fadeInUp"
+                    data-wow-delay="0.5s"
+                  >
+                    <ul class="checklist">
+                      <li>
+                        <img
+                          src="{{media_url}}img/icon/checkDouble.svg"
+                          alt="ایکون چک دابل "
+                          loading="lazy"
+                           title = 'خرید کلایمر | اجاره کلایمر'
+                        />
+                      </li>
+                      <li>100% رضایت مشتری</li>
+                    </ul>
+                    <ul class="checklist">
+                      <li>
+                        <img
+                          src="{{media_url}}img/icon/checkDouble.svg"
+                          alt="icon"
+                          loading="lazy"
+                           title = 'خرید کلایمر | اجاره کلایمر - درباره ما'
+                        />
+                      </li>
+                      <li>تیم مهندسی خبره</li>
+                    </ul>
+                    <ul class="checklist">
+                      <li>
+                        <img
+                          src="{{media_url}}img/icon/checkDouble.svg"
+                          alt="ایکون درباره ما"
+                          loading="lazy"
+                           title = 'خرید کلایمر | اجاره کلایمر'
+                        />
+                      </li>
+                      <li>قیمت مقرون به صرفه و منعطف</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-lg-5">
+                  <div class="thumb wow fadeInUp" data-wow-delay="0.3s">
+                    <img
+                      src="{{media_url}}img/about/aboutThumb2_2.png"
+                      alt="بنر سایت درباره ما"
+                      loading="lazy"
+                       title = 'خرید کلایمر | اجاره کلایمر'
+                    />
+                    <div class="video-box">
+                      <a
+                        href="#"
+                        class="play-btn popup-video"
+                        ><i class="fa-sharp-duotone fa-solid fa-play"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-wrapper wow fadeInUp" data-wow-delay="0.3s">
+                <a href="#" class="et-btn style4"
+                  >انواع و قیمت کلایمر ها<i class="fa-solid fa-arrow-left"></i
+                ></a>
+                <div class="fancy-box style1">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<!--  Offer Section Start   -->
+{% render_partial 'service:newservice' %}
+<br /><br />
+
+<!--  Brand Slider Section S T A R T   -->
+<div class="brand-slider-section">
+  <div class="container-fluid">
+    <div
+      class="brand-slider-wrapper style1 space border-radius fix pb-640 bg-theme-color3"
+    >
+    </div>
+  </div>
+</div>
+
+<!--  Team Member Section S T A R T   -->
+{% render_partial 'proj:member' %}
+
+<br /><br />
+
+{% render_partial 'about:qus' %}
+
+<br /><br />
+
+{% endblock content %}

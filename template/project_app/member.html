@@ -1,0 +1,44 @@
+<section class="team-member-section space pt-0 fix mt-n560">
+    <div class="container">
+     <div class="section-title d-flex flex-column justify-content-center mb-40">
+      <span class="subtitle theme-color2 text-center mxw-181px mx-auto wow fadeInUp" data-wow-delay="0.3s">تکنو کلایمر</span>
+      <h2 class="title text-white mxw-750px text-center mx-auto wow fadeInUp" data-wow-delay="0.6s">کلایمر در تهران</h2>
+     </div>
+     <div class="row gy-5">
+         
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207344.5084390048!2d51.347655249999995!3d35.707573749999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e00491ff3dcd9%3A0xf0b3697c567024bc!2z2KrZh9ix2KfZhtiMINin2LPYqtin2YYg2KrZh9ix2KfZhg!5e0!3m2!1sfa!2s!4v1737178060179!5m2!1sfa!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+      {% for mem in members %}
+      <div class="col-xl-4">
+        <div class="team-card style1">
+         <div class="team-thumb">
+          <img src="{{media_url}}{{mem.image_name}}" alt="{{mem.full_name}}" title='{{mem.full_name}} - {{mem.cerfigicated}}' />
+         </div>
+         <div class="team-content">
+          <div class="title">
+           <h4>{{mem.full_name}}</h4>
+           <p>{{mem.cerfigicated}}</p>
+          </div>
+          <div class="social-profile">
+           <ul>
+            <li>
+             <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li>
+             <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+             <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </li>
+           </ul>
+           <span class="plus-btn"><i class="fas fa-share-alt"></i></span>
+          </div>
+         </div>
+        </div>
+       </div>
+      {% endfor %}
+
+     </div>
+    </div>
+   </section>

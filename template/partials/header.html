@@ -1,0 +1,217 @@
+<!-- Header Section S T A R T -->
+<header class="et-header header-layout1">
+
+    <!-- =========================================
+         بخش جدید: نوار تماس بالا (Top Bar)
+         ========================================= -->
+    <div class="header-top-notification">
+        <div class="container-fluid">
+            <div class="top-bar-content">
+                <div class="call-cta-text d-none d-md-block">
+                    <span class="pulse-dot"></span>
+                    مشاوره و اجاره فوری کلایمر:
+                </div>
+                <a href="tel:{{company.mobile_number}}" class="top-phone-link">
+                    <i class="fas fa-phone-volume"></i>
+                    <span class="phone-number">{{company.mobile_number}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- پایان بخش نوار تماس بالا -->
+
+    <div class="sticky-wrapper">
+        <!-- Main Menu Area -->
+        <div class="container-fluid">
+            <div class="menu-area">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                        <div class="header-logo">
+                            <a href="{% url 'main:index' %}">
+                                <img src="{{media_url}}img/logo1.svg" alt="ironCon-header" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <nav class="main-menu d-none d-xl-inline-block">
+                            <ul>
+                                <li class="menu-item-has-children">
+                                    <a class="active" href="{% url 'main:index' %}">صفحه اصلی</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#"> خدمات </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/sevrice/services/electric-climber-rental/">اجاره کلایمر برقی</a></li>
+                                        <li><a href="/sevrice/services/rent-climber-mashhad/">اجاره کلایمر در مشهد</a></li>
+                                        <li><a href="/sevrice/services/rent-climber/">اجاره کلایمر</a></li>
+                                        <li><a href="/sevrice/services/sale-climber/">فروش کلایمر</a></li>
+                                        <li><a href="/sevrice/services/climber-rail-tehran/">اجاره کلایمر ریلی در تهران</a></li>
+                                        <li><a href="/sevrice/services/rent-climber-tabriz/">اجاره کلایمر در تبریز</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/blog/blog_detail/climber-price/">قیمت کلایمر برقی</a></li>
+                                <li><a href="/sevrice/services/rent-climber/"> اجاره انواع کلایمر حرفه ای</a></li>
+
+                                <li><a href="https://www.technoklaymer.ir/blog/blogs/">تکنو بلاگ</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header-button d-flex d-xl-none">
+                            <button type="button" class="et-menu-toggle sidebar-btn">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- دکمه تماس دوم (داخل هدر اصلی) را زیباتر کردیم -->
+                    <div class="col-auto d-none d-xl-block">
+                        <div class="header-button">
+                            <a href="tel:{{company.mobile_number}}" class="main-header-btn">
+                                <span class="icon-box"><img src="{{media_url}}img/icon/messageIcon.svg" alt="call"></span>
+                                <span class="text-box">
+                                    <small> </small>
+                                    <strong>{{company.mobile_number}}</strong>
+                                </span>
+                            </a>
+                             <!-- دکمه منوی کناری -->
+                            <button type="button" class="simple-icon sideMenuInfo sidebar-btn ml-3">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="cursor-outer"></div>
+<div class="cursor-inner"></div>
+
+<!-- =========================================
+     استایل‌های اختصاصی (CSS)
+     ========================================= -->
+<style>
+    /* تنظیمات نوار بالای صفحه */
+    .header-top-notification {
+        background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%); /* گرادینت آبی حرفه‌ای */
+        color: #ffffff;
+        padding: 10px 0;
+        position: relative;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .top-bar-content {
+        display: flex;
+        justify-content: center; /* وسط چین کردن محتوا */
+        align-items: center;
+        gap: 15px;
+        font-family: inherit;
+    }
+
+    /* متن مشاوره (فقط دسکتاپ) */
+    .call-cta-text {
+        font-size: 14px;
+        font-weight: 500;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* دایره چشمک‌زن */
+    .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #22c55e;
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
+        animation: dotPulse 2s infinite;
+    }
+
+    /* لینک شماره تلفن در نوار بالا */
+    .top-phone-link {
+        color: #fff !important;
+        background: rgba(255,255,255,0.15);
+        padding: 6px 20px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .top-phone-link:hover {
+        background: #fff;
+        color: #1e3a8a !important; /* تغییر رنگ متن در هاور */
+        transform: scale(1.05);
+    }
+
+    .top-phone-link i {
+        font-size: 18px;
+        animation: shake 3s infinite;
+    }
+
+    .phone-number {
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    /* استایل دکمه تماس داخل هدر اصلی (جایگزین استایل زشت قبلی) */
+    .main-header-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #333;
+    }
+    .main-header-btn .text-box {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+    .main-header-btn strong {
+        font-size: 20px;
+        color: #1e3a8a;
+    }
+    .main-header-btn small {
+        font-size: 12px;
+        color: #666;
+    }
+
+    /* انیمیشن‌ها */
+    @keyframes dotPulse {
+        0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+        70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    @keyframes shake {
+        0% { transform: rotate(0deg); }
+        5% { transform: rotate(15deg); }
+        10% { transform: rotate(-15deg); }
+        15% { transform: rotate(15deg); }
+        20% { transform: rotate(0deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+    /* ریسپانسیو موبایل */
+    @media (max-width: 768px) {
+        .top-phone-link {
+            width: 100%;
+            justify-content: center;
+            padding: 8px 15px;
+        }
+        .header-top-notification {
+            padding: 8px 0;
+        }
+        .phone-number {
+            font-size: 20px; /* در موبایل درشت‌تر */
+        }
+    }
+</style>

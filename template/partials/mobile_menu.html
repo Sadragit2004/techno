@@ -1,0 +1,48 @@
+<!-- Mobilemenu    S T A R T -->
+<div class="et-menu-wrapper onepage-nav">
+    <div class="et-menu-area text-center">
+     <button class="et-menu-toggle"><i class="fal fa-times"></i></button>
+     <div class="mobile-logo">
+      <a href="{% url 'main:index' %}">
+       <img src="{{media_url}}img/logo.svg" alt="ironCon" />
+      </a>
+     </div>
+     <nav class="et-mobile-menu">
+      <ul>
+       <li class="menu-item-has-children">
+        <a class="active" href="{% url 'main:index' %}">صفحه اصلی</a>
+        <ul class="sub-menu">
+
+        </ul>
+       </li>
+       <!--<li><a href="{% url 'about:about' %}">درباره ما</a></li>-->
+       <!--<li class="menu-item-has-children">-->
+       <!-- <a href="#"> خدمات </a>-->
+       <!-- <ul class="sub-menu">-->
+       <!--  <li><a href="{% url 'service:services' %}">خدمات</a></li>-->
+
+       <!-- </ul>-->
+       <!--</li>-->
+       <!--<li class="menu-item-has-children">-->
+       <!-- <a href="#"> پروژه ها </a>-->
+       <!-- <ul class="sub-menu">-->
+       <!--  <li><a href="{% url 'proj:projs' %}">پروژه ها</a></li>-->
+
+       <!-- </ul>-->
+       <!--</li>-->
+       <!--<li class="menu-item-has-children">-->
+       <!-- <a href="#"> بلاگ </a>-->
+       <!-- <ul class="sub-menu">-->
+       <!--  <li><a href="{% url 'blog:blogs' %}">بلاگ</a></li>-->
+
+       <!-- </ul>-->
+       <!--</li>-->
+       <!--<li><a style='color:#333;' href="{% url 'call:call' %}">تماس</a></li>-->
+       <ul>
+       <li style='color:#333;'>{{company.mobile_number}}</li>
+       <li style='color:#333;'>{{company.phone_number}}</li>
+    </ul>
+      </ul>
+     </nav>
+    </div>
+   </div>

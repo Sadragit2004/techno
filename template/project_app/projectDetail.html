@@ -1,0 +1,210 @@
+{% extends "main_template.html" %}
+
+{% block title1 %}
+
+{{meta_tag.page_title}}
+
+{% endblock title1 %}
+
+{% block meta1 %}
+<!-- Meta Tags -->
+
+<meta name="robots" content="index, follow" />
+<meta name="description" content="{{meta_tag.description}}" />
+<meta name="author" content="تکنو کلایمر - خرید و اجاره کلایمر" />
+<meta property="og:title" content="{{meta_tag.og_title}}" />
+<meta property="og:description" content="{{meta_tag.description}}" />
+<meta property="og:image" content="{{ media_url }}{{ project.image_name }}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="fa_IR" />
+<meta property="og:site_name" content="تکنو کلایمر" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{meta_tag.og_title}}" />
+<meta name="twitter:description" content="{{meta_tag.description}}" />
+<meta name="twitter:image" content="{{ media_url }}{{ project.image_name }}" />
+<meta property="article:modified_time" content="{{project.created_at}}" />
+<link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+{% endblock meta1 %}
+
+
+
+{% block json %}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "{{ meta_tag.og_title }}",
+      "url": "{{ request.build_absolute_uri }}",
+      "description": "{{meta_tag.description}}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ meta_tag.og_title }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ company.name_company }}",
+        "url": "{{ request.build_absolute_uri }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ media_url }}img/logo1.svg"
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ media_url }}{{ project.image_name }}",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntity": {
+        "@type": "Project",
+        "name": "{{ meta_tag.og_title }}",
+        "description": "{{ project.decription }}",
+        "url": "{{ request.build_absolute_uri }}",
+        "image": "{{ media_url }}{{ project.image_name }}",
+        "projectDetails": [
+          {% for proj in project.features_value.all %}
+            {
+              "@type": "PropertyValue",
+              "name": "{{ proj.feature }}",
+              "value": "{{ proj.value }}"
+            }{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ]
+      }
+    }
+    </script>
+
+{% endblock json %}
+
+
+
+{% block content %}
+
+
+==============================-->
+<div class="breadcrumb-wrapper">
+  <div class="container-fluid">
+    <div class="breadcumb border-radius" data-bg-src="{{ media_url }}img/hero/breadcumbBg.png">
+      <div class="row d-flex align-items-center">
+        <div class="col-xl-6 d-flex justify-content-center">
+          <div class="page-heading">
+            <h1 class="wow fadeInUp" data-wow-delay=".3s">{{ project.title }}</h1>
+            <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+              <li>
+                <a href="{% url 'main:index' %}">
+                  صفحه اصلی
+                </a>
+              </li>
+              <li>
+                <i class="fas fa-chevron-left"></i>
+              </li>
+              <li>
+                {{ company.name_company }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-6 d-flex justify-content-center">
+          <div class="breadcumb-thumb">
+            <img class="thumb" src="{{ media_url }}img/hero/breadcumbThumb.png" alt="{{ project.title }} - image banner2" title="{{ project.title }}" />
+            <div class="shape">
+              <img src="{{ media_url }}img/shape/breadcumbShape.png" alt="{{ project.title }} - image banner22" title="{{ project.title }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project Details Section Start -->
+<section class="project-details-section">
+  <div class="project-details-wrapper style1 space fix">
+    <div class="container">
+      <!-- پروژه به عنوان یک مقاله مستقل -->
+      <article class="thumb1">
+        <figure>
+          <img
+            src="{{ media_url }}{{ project.image_name }}"
+            srcset="{{ media_url }}{{ project.image_name }} 480w,
+                    {{ media_url }}{{ project.image_name }} 768w,
+                    {{ media_url }}{{ project.image_name }} 1200w"
+            sizes="(max-width: 480px) 100vw,
+                   (max-width: 768px) 50vw,
+                   33vw"
+            alt="{{ project.title }}-blogs"
+            title="{{ project.title }} - title"
+            loading="lazy"
+          />
+          <figcaption>{{ project.title }}</figcaption>
+        </figure>
+      </article>
+
+      <div class="row gy-5">
+        <div class="col-xl-8">
+          <!-- توضیحات پروژه در یک مقاله -->
+          <article class="project-details-content">
+            <h1>{{ project.title }}</h1>
+            <p class="text1">
+              {% autoescape off %} {{ project.decription }}{% endautoescape %}
+            </p>
+          </article>
+        </div>
+
+        <div class="col-xl-4">
+          <aside class="main-sidebar">
+            <!-- ویجت‌ها -->
+            <div class="single-sidebar-widget mt-n116 wow fadeInUp" data-wow-delay=".4s">
+              <div class="wid-title">
+                <h3>جزییات پروژه</h3>
+              </div>
+              <div class="project-details-widget-card">
+                <ul class="project-info">
+                  {% for proj in project.features_value.all %}
+                    <li>
+                      <span class="label">{{ proj.feature }}:</span>
+                      <span class="value">{{ proj.value }}</span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="single-sidebar-widget pt-0 bg-theme-color2 wow fadeInUp" data-wow-delay=".4s">
+              <div class="thumb">
+                <img src="{{ media_url }}img/service/serviceDetailsThumb1_4.png" alt="عکس مردی در حال نگاه کر2دن" />
+              </div>
+              <div class="wid-title pl-30 pt-4 pb-2">
+                <h3>برای ساخت و ساز مشاوره میخوای!؟</h3>
+              </div>
+              <div class="btn-wrapper pr-40">
+                <a href="{% url 'call:call' %}" class="et-btn style2">تماس بگیر <i class="fa-solid fa-arrow-left"></i></a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Navigation Section -->
+<div class="details-navigation-two">
+  <div class="single-navigation two">
+    {% if proj.slug %}
+      <a href="{% url 'proj:projectDetail' slug=proj.slug %}" class="nav-btn">Details</a>
+    {% else %}
+      <span>No details available</span>
+    {% endif %}
+    <svg width="11" height="10" viewBox="0 0 11 10" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.97921 2.22814C7.34659 3.17073 4.9887 2.52309 4.03258 0.867041L3.64073 0.188334L2.30142 0.961587L2.69327 1.64029C3.38841 2.84432 4.56145 3.6729 5.85794 4.03021L0.608508 7.06097L1.39221 8.41838L6.64165 5.38762C6.30284 6.68907 6.43389 8.11924 7.12903 9.32327L7.52088 10.002L8.8602 9.22872L8.46835 8.55001C7.51262 6.89464 8.13029 4.52815 9.76292 3.58555L10.4326 3.19893L9.64887 1.84151L8.97921 2.22814Z"></path>
+    </svg>
+    قبلی
+  </a>
+
+  </div>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,106 @@
+{% extends "main_template.html" %}
+
+
+
+{% block meta1 %}
+
+<meta name="description" content="خدمات برجسته {{ company.name_company }} در حوزه اجاره و خرید کلایمر. ارائه بهترین شرایط برای خرید، اجاره و نصب کلایمر با کیفیت و قیمت مناسب." />
+<meta name="keywords" content="اجاره کلایمر, خرید کلایمر, خدمات کلایمر, پروژه‌های ساختمانی, نصب کلایمر, پروژه‌های {{ company.name_company }}" />
+<meta name="author" content="{{ company.name_company }}">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="پروژه‌های کلایمر و خدمات {{ company.name_company }}" />
+<meta property="og:description" content="آشنایی با پروژه‌ها و خدمات اجاره و خرید کلایمر از {{ company.name_company }}. بهترین شرایط و خدمات در صنعت کلایمر." />
+<meta property="og:image" content="{{ media_url }}img/hero/breadcumbThumb.png">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="پروژه‌های {{ company.name_company }}">
+<meta property="og:description" content="آشنایی با پروژه‌ها و خدمات اجاره و خرید کلایمر از {{ company.name_company }}. بهترین شرایط و خدمات در صنعت کلایمر." />
+<meta name="twitter:image" content="{{ media_url }}img/hero/breadcumbThumb.png">
+{% endblock meta1 %}
+
+
+{% block title1 %}
+اجاره کلایمر | خرید کلایمر | فروش کلایمر |09001976060
+{% endblock title1 %}
+
+{% block json %}
+
+
+
+{% endblock json %}
+
+
+{% block content %}
+==============================-->
+<div class="breadcrumb-wrapper">
+  <div class="container-fluid">
+   <div class="breadcumb border-radius" data-bg-src="{{media_url}}img/hero/breadcumbBg.png">
+    <div class="row d-flex align-items-center">
+     <div class="col-xl-6 d-flex justify-content-center">
+      <div class="page-heading">
+       <h1 class="wow fadeInUp" data-wow-delay=".3s">پروژه‌های {{ company.name_company }}</h1>
+       <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+        <li><a href="{% url 'main:index' %}">صفحه اصلی</a></li>
+        <li><i class="fas fa-chevron-left"></i></li>
+        <li>پروژه‌ها</li>
+       </ul>
+      </div>
+     </div>
+     <div class="col-xl-6 d-flex justify-content-center">
+      <div class="breadcumb-thumb">
+       <img class="thumb" src="{{media_url}}img/hero/breadcumbThumb.png" alt="نمای پروژه‌های {{ company.name_company }}" title="پروژه‌های {{ company.name_company }}" />
+       <div class="shape">
+        <img src="{{media_url}}img/shape/breadcumbShape.png" alt="طراحی اختصاصی پروژه‌های {{ company.name_company }}" title="طراحی اختصاصی پروژه‌های {{ company.name_company }}" />
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- Project Section Start -->
+ <div class="project-section space fix">
+  <div class="project-wrapper style1">
+   <div class="container">
+    <div class="row gy-30 gx-30">
+     {% for proj in projects %}
+     <div class="col-lg-4">
+      <div class="project-thumb wow fadeInUp" data-wow-delay="0.3s">
+       <img
+        class="thumb1"
+        src="{{ media_url }}{{ proj.image_name }}"
+        srcset="{{ media_url }}{{ proj.image_name }} 480w,
+                {{ media_url }}{{ proj.image_name }} 768w,
+                {{ media_url }}{{ proj.image_name }} 1200w"
+        sizes="(max-width: 480px) 100vw,
+               (max-width: 768px) 50vw,
+               33vw"
+        alt="تصویر پروژه {{ proj.title }} - خدمات {{ proj.group_service.title }}"
+        title="پروژه {{ proj.title }} - {{ proj.group_service.title }}" />
+
+       <div class="thumb-content">
+        <p>{{ proj.title }}</p>
+        <h3>
+         <a href="{% url 'proj:projectDetail' slug=proj.slug %}">{{ proj.group_service.title }}</a>
+        </h3>
+        <a href="{% url 'proj:projectDetail' slug=proj.slug %}" class="link-btn">
+         اطلاعات بیشتر <i class="fa-regular fa-arrow-left"></i>
+        </a>
+       </div>
+      </div>
+     </div>
+     {% endfor %}
+    </div>
+
+    <!-- Pagination Section -->
+   
+   </div>
+  </div>
+ </div>
+
+
+
+{% endblock content %}
